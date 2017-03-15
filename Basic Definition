@@ -1,1 +1,12 @@
 
+Snort is a IDS \ IPS service.
+
+How to detect any anomolies:
+    a. check if the IP is known ?
+    b. if the ports used are standard or known
+    c. If there is suspicious in the data stream.
+    d. add more if you find anything new.
+  tools to use:
+   use nmap to scan the home_net range, because you should not have loose ends.
+   
+   Naming convention is most important in snort.
