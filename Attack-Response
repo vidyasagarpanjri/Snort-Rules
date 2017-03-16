@@ -1,0 +1,9 @@
+These are the pre installed rules in the snort, we are just trying to explore them and find out why they are how they are.
+we will go one by one and traverse the each rule, there syntax, properties etc....
+
+All naming convention can be seen in  Snort-Rules/Basic Definition 
+
+1. alert tcp $HOME_NET any -> $EXTERNAL_NET any (msg:"ATTACK-RESPONSES directory listing"; \
+flow:established; content:"Volume Serial Number"; classtype:bad-unknown; sid:1292; rev:9;)
+  a. it's an alert as clearly 
+
