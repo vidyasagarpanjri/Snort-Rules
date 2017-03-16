@@ -1,1 +1,16 @@
-alert :
+There are 5 available default actions in Snort, alert, log, pass, activate, and dynamic. In addition, if you are running Snort in inline mode,
+you have additional options which include drop, reject, and sdrop [copied from snort manual page 183]
+
+logging mode: IDS mode
+1. alert : to give just a msg if a rule condtion it true (generate an alert using the selected alert method, and then log the packet)
+2. log : write the packet to file, save to future (log the packet)
+3. pass : let the packet to pass through
+4. activate : passive action, it alerts and then trun on other rules (alert and then turn on another dynamic rule)
+5. dynamic : secondary rule some other rules will call them, mainly activate (remain idle until activated by an activate rule , then act as a log rule)
+
+inline mode: IPS mode
+6. drop : block and log the packet, just drop no reply to source.
+7. reject : block, log, then send the reset reply, if protocal is TCP and unreachable to ICMP protocol. we handle the dropping of packet.
+8. sdrop :block the packet and forget it, no log for these action. risky we can loose the information 
+
+We should use all these action very carefull and where they are needed, misplace action can result in huge storage use, loss of packets etc...
