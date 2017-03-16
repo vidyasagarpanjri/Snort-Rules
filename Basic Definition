@@ -9,4 +9,4 @@ How to detect any anomolies:
   tools to use:
    use nmap to scan the home_net range, because you should not have loose ends.
    
-   Naming convention is most important in snort.
+   Naming convention is most important in snort. As it will help us to identify the rules, alrets and to scale the forece.
