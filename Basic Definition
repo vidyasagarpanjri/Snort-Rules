@@ -10,3 +10,24 @@ How to detect any anomolies:
    use nmap to scan the home_net range, because you should not have loose ends.
    
    Naming convention is most important in snort. As it will help us to identify the rules, alrets and to scale the forece.
+
+Snort rules can be divided into 2 sections 
+    a. header : it contains rules action, protocol, source IP and destination IP, source ports and destination port and netmask.
+    b. rule options : it contains alert messagses , directios like what sould be searches and looked for and how. like if then else condition.
+ like e.g form snort manual page 182
+    alert tcp any any -> 192.168.1.0/24 111 (content:"|00 01 86 a5|"; msg:"mountd access";)
+    
+    alert -> rules action what action should be taken if condition is true.
+    tcp -> protocol to looked for
+    any -> any source IP
+    any -> any source port
+    
+    "->" it can be looked as connetor or symbol for relation.
+    
+    192.168.1.0/24 -> destination IP range
+    111 -> destination port
+    
+    () -> rule actions 
+    content:"|00 01 86 a5|"; -> data in hex will be looked in the packet content.
+    msg:"mountd access"; -> this message will be given if the condition is true.
+    
