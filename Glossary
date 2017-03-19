@@ -1,0 +1,52 @@
+There are 5 available default actions in Snort, alert, log, pass, activate, and dynamic. In addition, if you are running Snort in inline mode,
+you have additional options which include drop, reject, and sdrop [copied from snort manual page 183]
+
+logging mode: IDS mode
+1. alert : to give just a msg if a rule condtion it true (generate an alert using the selected alert method, and then log the packet)
+2. log : write the packet to file, save to future (log the packet)
+3. pass : let the packet to pass through
+4. activate : passive action, it alerts and then trun on other rules (alert and then turn on another dynamic rule)
+5. dynamic : secondary rule some other rules will call them, mainly activate (remain idle until activated by an activate rule , then act as a log rule)
+
+inline mode: IPS mode
+6. drop : block and log the packet, just drop no reply to source.
+7. reject : block, log, then send the reset reply, if protocal is TCP and unreachable to ICMP protocol. we handle the dropping of packet.
+8. sdrop :block the packet and forget it, no log for these action. risky we can loose the information 
+
+We should use all these action very carefull and where they are needed, misplace action can result in huge storage use, loss of packets etc...
+
+
+There are four major categories of rule options.
+
+  1.  general These options provide information about the rule but do not have any affect during detection
+  2.  payload These options all look for data inside the packet payload and can be inter-related
+  3.  non-payload These options look for non-payload data
+  4.  post-detection These options are rule specific triggers that happen after a rule has "fired."
+  
+  General rule option:
+  attribute : "condition";
+    1.  msg -> string to show as output when a certain rules triggered.
+    
+    2.  reference -> to refere the information used by external sources to raise the confidence. it can be URL or system defined[page 186]
+    reference:<id system>, <id>; [reference:<id system>, <id>;]
+    
+    3.  gid -> what part of Snort generate the event when a rule fired
+    gid:<generator id>;
+    
+    4.  sid -> to identify each rules, local >=10,00,000, for snort distritution 100-999,999, <100 reserved for future use
+    sid:<snort rules id>;
+    
+    5. rev -> to revise the exixting rules.
+    rev:<revision integer>;
+    
+    6. classtype -> to categorise general attack type,    classtypes are also expandables like RAMBO. in classification.config  [page 188], we can't use custom rules directly, they should be defined in config file.
+    classtype:<class name>;
+    
+    7. priority -> to assign the severity of the incident, remember classtype associated with rule will overwrite the priority to default clasatype 
+    priority:<priority integer>;
+    
+    8. metadata -> to provide addition information about rule.
+    metadata:key1 value1, key2 value2;
+    
+    
+    
