@@ -1,0 +1,6 @@
+preprocessor frag3_global
+preprocessor frag3_engine
+
+ipvar H_N [192.168.1.103]
+ipvar E_N [!192.168.1.0/24]
+alert tcp $E_N any -> $H_N any (msg:"TCP SYN SCANNING";flags: S;sid:100001)  
