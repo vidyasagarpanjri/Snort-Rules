@@ -9,3 +9,4 @@ ipvar H_N [192.168.1.103]
 ipvar E_N [!192.168.1.103]
 portvar scan_port [30000:]
 alert tcp $E_N $scan_port -> $H_N any (msg:"TCP SYN SCANNING";flow:stateless;flags: S;ack:0;sid:100001;)  
+#alert tcp $E_N any -> $H_N any (msg:"TCP SYN SCANNING";flags: S;detection_filter:track by_src, count 60, seconds 1;sid:100001;rev:2)
