@@ -1,2 +1,1 @@
 # Snort-Rules
-# NtSpamEngine
