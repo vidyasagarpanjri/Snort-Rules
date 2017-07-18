@@ -1,0 +1,7 @@
+Physical Network Layer : it defines hardware specifications.
+Data Link Layer: responsible to for transmission of data in a network. like sending data to nodes in a Lan. 
+                  it can also detect and correct the error in data frame,
+          sub layer : media access control 
+                      framing is frame synchronization, whenever a bit slip occur(loss of data bit).
+                      sender and reciver must resync again in order to carry out transmission according to protocol.
+                      it can be using frame bit after every transmission or based on words like STX and ETX 
