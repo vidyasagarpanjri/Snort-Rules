@@ -1,0 +1,12 @@
+Protocol Rules:
+when we are targeting any perticular rule protocol like TCP, we only focus on one perticular protocol
+    alert udp any any -> any any (msg:"UDP protocl is used"; sid:1000001)
+Note this will create huge noise, this should be used for wisely, actually it shuold not be used ever.
+
+Port Rules:
+when we want to target any perticular port or group of ports
+    alert tcp any 80 -> any any (msg:"Traffic is comming from http port",sid:100002)
+it can be used to detect unauthorised acces to no standard ports, or to detect already detect port which are used by bots or other malware services
+
+you can define ports like
+
