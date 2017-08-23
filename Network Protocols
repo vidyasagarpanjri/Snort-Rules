@@ -1,7 +1,33 @@
-Physical Network Layer : it defines hardware specifications.
-Data Link Layer: responsible to for transmission of data in a network. like sending data to nodes in a Lan. 
-                  it can also detect and correct the error in data frame,
-          sub layer : media access control 
-                      framing is frame synchronization, whenever a bit slip occur(loss of data bit).
-                      sender and reciver must resync again in order to carry out transmission according to protocol.
-                      it can be using frame bit after every transmission or based on words like STX and ETX 
+#Physical Network Layer : it defines hardware specifications.
+#Data Link Layer: responsible to for transmission of data in a network. like sending data to nodes in a Lan. 
+#                  it can also detect and correct the error in data frame,
+#          sub layer : media access control 
+#                      framing is frame synchronization, whenever a bit slip occur(loss of data bit).
+#                      sender and reciver must resync again in order to carry out transmission according to protocol.
+#                      it can be using frame bit after every transmission or based on words like STX and ETX 
+                     
+
+ARP:
+The address resolution protocol (arp) is a protocol used by the Internet Protocol (IP) [RFC826], 
+specifically IPv4, to map IP network addresses to the hardware addresses used by a data link protocol. 
+The protocol operates below the network layer as a part of the interface between the OSI network and OSI link layer.
+    Who has 192.168.1.103?  Tell 192.168.1.254 Broadcast
+    192.168.1.103 is at xx:xx:xx:xx:xx:xx 
+    IP to MAC
+    
+RARP: 
+Reverse ARP    : MAC to IP 
+
+ICMP :
+The Internet Control Message Protocol (ICMP) is a supporting protocol in the Internet protocol suite. 
+It is used by network devices, including routers, to send error messages and operational information indicating, 
+for example, that a requested service is not available or that a host or router could not be reached.
+
+IP :  header size 20 
+The Internet Protocol is responsible for addressing hosts, encapsulating data into datagrams 
+(including fragmentation and reassembly) and routing datagrams from a source host to a destination host across one or more IP networks.
+For these purposes, the Internet Protocol defines the format of packets and provides an addressing system.
+
+DNS : Domain Name System resolve domain name to IP, over UDP, 
+
+HTTP
