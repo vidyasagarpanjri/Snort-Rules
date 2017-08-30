@@ -31,3 +31,20 @@ For these purposes, the Internet Protocol defines the format of packets and prov
 DNS : Domain Name System resolve domain name to IP, over UDP, 
 
 HTTP
+
+TCP :
+maximum transmission unit (MTU):
+A maximum transmission unit (MTU) is the largest size packet or frame, specified in octets (eight-bit bytes), 
+that can be sent in a packet- or frame-based network such as the Internet. The Internet's Transmission Control Protocol (TCP)
+uses the MTU to determine the maximum size of each packet in any transmission.
+
+Time to live (TTL):
+Time to live (TTL) or hop limit is a mechanism that limits the lifespan or lifetime of data in a computer or network. 
+TTL may be implemented as a counter or timestamp attached to or embedded in the data. 
+Once the prescribed event count or timespan has elapsed, data is discarded.
+
+ID: Identification field (IP ID)
+The Identification field (IP ID) of the IPv4 header identifies which fragments constitute a datagram,when fragmented datagrams
+are reassembled. The IPv4 specification does not specify exactly how this field is to be assigned values, only that each packet 
+should get an IP ID that is unique for the source-destination pair and protocol for the time during which the datagram (or any of its fragments)
+   could be alive in the network.
