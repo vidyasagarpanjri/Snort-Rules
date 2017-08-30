@@ -38,7 +38,7 @@ A maximum transmission unit (MTU) is the largest size packet or frame, specified
 that can be sent in a packet- or frame-based network such as the Internet. The Internet's Transmission Control Protocol (TCP)
 uses the MTU to determine the maximum size of each packet in any transmission.
 
-Time to live (TTL):
+TTL: Time to live
 Time to live (TTL) or hop limit is a mechanism that limits the lifespan or lifetime of data in a computer or network. 
 TTL may be implemented as a counter or timestamp attached to or embedded in the data. 
 Once the prescribed event count or timespan has elapsed, data is discarded.
@@ -46,5 +46,30 @@ Once the prescribed event count or timespan has elapsed, data is discarded.
 ID: Identification field (IP ID)
 The Identification field (IP ID) of the IPv4 header identifies which fragments constitute a datagram,when fragmented datagrams
 are reassembled. The IPv4 specification does not specify exactly how this field is to be assigned values, only that each packet 
-should get an IP ID that is unique for the source-destination pair and protocol for the time during which the datagram (or any of its fragments)
-   could be alive in the network.
+should get an IP ID that is unique for the source-destination pair and protocol for the time during which the datagram 
+(or any of its fragments) could be alive in the network.
+
+IpLen: Header Length 
+As long as no options are present in the IP header, the header length is constant and well known.
+
+Flags:
+4.2.4.  Flags
+
+   o  ECN-E (Explicit Congestion Notification):'1' to echo CE bit in IP header. It will be set in several consecutive headers 
+      (until 'acknowledged' by CWR).  If ECN nonces are used, then there will be a 'nonce-sum' (NS) bit in the flags,as well.
+      Again, transparency of the reserved bits is crucial for future-proofing this compression scheme.  
+      From an efficiency/compression standpoint, the NS bit will either be unused (always '0') or randomly changing.
+
+   o  CWR (Congestion Window Reduced):'1' to signal congestion window reduced on ECN.  It will generally be set in individual packets.  The flag will be set once per loss
+      event.  Thus, the probability of its being set is proportional to the degree of congestion in the network, but it is less likely to
+      be set than the CE flag.
+   o  ECE (Echo Congestion Experience): If 'congestion experienced' is signaled in a received IP header,this is echoed through the ECE bit in segments sent by the
+      receiver until acknowledged by seeing the CWR bit set.  Clearly,in periods of high congestion and/or long RTT, this flag will
+      frequently be set to '1'.
+   o  URG (Urgent Flag):'1' to indicate urgent data (which is unlikely with any flag other than ACK).
+   o  ACK (Acknowledgement):'1' for all except the initial 'SYN' packet.
+   o  PSH (Push Function Field) : Generally accepted to be randomly '0' or '1'.  However, it may be biased more to one 
+      value than the other (this is largely caused by the implementation of the stack). 
+   o  RST (Reset Connection):'1' to reset a connection (unlikely with any flag other than ACK).
+   o  SYN (Synchronize Sequence Number):'1' for the SYN/SYN-ACK, only at the start of a connection.
+   o  FIN (End of Data: FINished) :'1' to indicate 'no more data' (unlikely with any flag other than ACK)
