@@ -22,4 +22,13 @@ content:
   content:"google";rawbytes;)
 3.   depth: it will look for the match upto specified number of bytes from starting of payload.
   for eg if curl  www.google.com and 
-  check the cache-control header. using   content:"href";nocase;depth:25;
+  check the cache-control header. using   content:"cache";nocase;depth:25;
+
+4. offset :  it will look for the match after the number of bytes specified in offset in payload
+      eg. we want to look only for html code in html response which is after 80 bytes in 
+      curl  www.google.com
+      content:"html";nocase;offset:80;
+5. distance : it will start searching after the match of previous content ( if present else from starting )   
+like if we want to search "href" after html in :  curl  www.google.com 
+we use : content:"html";nocase;distance:1;content:"href";nocase;
+      
